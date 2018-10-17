@@ -14,7 +14,6 @@ public class Main extends Application {
   private ResourceBundle bundle;
   private FXMLLoader fxmlLoader;
 
-
   public static void main(String[] args) {
     launch(args);
   }
@@ -22,25 +21,25 @@ public class Main extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     setupLoaders();
-    //todo: setup stage with results of load layout
+    setupStage(stage, loadLayout());
   }
 
-  private void setupLoaders(){
+  private void setupLoaders() {
     classLoader = getClass().getClassLoader();
-    bundle = ResourceBundle.getBundle("res/ui.properties");
+    bundle = ResourceBundle.getBundle("res/ui");
     fxmlLoader = new FXMLLoader(classLoader.getResource("res/main.fxml"), bundle);
-
   }
 
   private Parent loadLayout() throws IOException {
-     Parent root = fxmlLoader.load();
-     //todo: do something more?
+    Parent root = fxmlLoader.load();
+    // TODO DO something more??
     return root;
   }
 
-  private void setupStage(Stage stage, Parent root){
+  private void setupStage(Stage stage, Parent root) {
     Scene scene = new Scene(root);
-    //todo: set title, icon, etc.
+    stage.setTitle(bundle.getString("window_title"));
+    // TODO Set icon, etc.
     stage.setResizable(false);
     stage.setScene(scene);
     stage.show();

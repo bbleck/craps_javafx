@@ -7,13 +7,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-  public static final String RES_UI = "res/ui";
-  public static final String RES_MAIN_FXML = "res/main.fxml";
+  public static final String RES = "res/";
+  public static final String RES_UI = RES + "ui";
+  public static final String RES_MAIN_FXML = RES + "main.fxml";
   public static final String WINDOW_TITLE = "window_title";
+  private static final String ICON_PATH = RES + "icon.png";
   private ClassLoader classLoader;
   private ResourceBundle bundle;
   private FXMLLoader fxmlLoader;
@@ -50,7 +53,7 @@ public class Main extends Application {
   private void setupStage(Stage stage, Parent root) {
     Scene scene = new Scene(root);
     stage.setTitle(bundle.getString(WINDOW_TITLE));
-    // TODO Set icon, etc.
+    stage.getIcons().add(new Image(classLoader.getResourceAsStream(ICON_PATH)));
     stage.setResizable(false);
     stage.setScene(scene);
     stage.show();

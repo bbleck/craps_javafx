@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="craps_javafx:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/craps_javafx_jar</output-path>
+    <root id="archive" name="craps_javafx.jar">
+      <element id="module-output" name="craps_javafx" />
+    </root>
+  </artifact>
+</component>

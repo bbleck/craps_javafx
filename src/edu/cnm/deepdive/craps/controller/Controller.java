@@ -103,6 +103,10 @@ public class Controller {
     }
   }
 
+  public void stop(){
+    pause(null);
+  }
+
   private void updateMenu() {
     next.setDisable(running);
     fast.setDisable(running);

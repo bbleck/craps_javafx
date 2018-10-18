@@ -19,6 +19,9 @@ import javafx.util.Callback;
 
 public class Controller {
 
+  public static final String NULL_STRING = "";
+  public static final String WIN = "win";
+  public static final String LOSS = "loss";
   private Game game;
   private boolean running;
   private String tallyFormat;
@@ -48,7 +51,7 @@ public class Controller {
 //      }
 //    });
     rolls.setCellFactory((lv) -> new RollCell(resources));
-    rolls.getStyleClass().add("");
+    rolls.getStyleClass().add(NULL_STRING);
     reset(null);
     updateMenu();
   }
@@ -93,13 +96,13 @@ public class Controller {
     if (!diceRolls.isEmpty()) {
       State state = diceRolls.get(diceRolls.size() - 1).getState();
       if (state == State.WIN) {
-        styleClasses.add("win");
+        styleClasses.add(WIN);
       } else if (state == State.LOSS) {
-        styleClasses.add("loss");
+        styleClasses.add(LOSS);
       }
       rolls.getItems().addAll(diceRolls);
     } else {
-      styleClasses.add("");
+      styleClasses.add(NULL_STRING);
     }
   }
 

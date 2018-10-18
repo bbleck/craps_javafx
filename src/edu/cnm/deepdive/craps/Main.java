@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+  public static final String RES_UI = "res/ui";
+  public static final String RES_MAIN_FXML = "res/main.fxml";
+  public static final String WINDOW_TITLE = "window_title";
   private ClassLoader classLoader;
   private ResourceBundle bundle;
   private FXMLLoader fxmlLoader;
@@ -34,8 +37,8 @@ public class Main extends Application {
 
   private void setupLoaders() {
     classLoader = getClass().getClassLoader();
-    bundle = ResourceBundle.getBundle("res/ui");
-    fxmlLoader = new FXMLLoader(classLoader.getResource("res/main.fxml"), bundle);
+    bundle = ResourceBundle.getBundle(RES_UI);
+    fxmlLoader = new FXMLLoader(classLoader.getResource(RES_MAIN_FXML), bundle);
   }
 
   private Parent loadLayout() throws IOException {
@@ -46,7 +49,7 @@ public class Main extends Application {
 
   private void setupStage(Stage stage, Parent root) {
     Scene scene = new Scene(root);
-    stage.setTitle(bundle.getString("window_title"));
+    stage.setTitle(bundle.getString(WINDOW_TITLE));
     // TODO Set icon, etc.
     stage.setResizable(false);
     stage.setScene(scene);

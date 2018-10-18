@@ -13,6 +13,9 @@ import javafx.scene.text.Text;
 
 public class RollCell extends ListCell<Roll> {
 
+  public static final String RES_ROLL_FXML = "res/roll.fxml";
+  public static final String RES_FACE_D_PNG = "res/face_%d.png";
+  public static final int NUMBER_FACES = 6;
   private ResourceBundle bundle;
 
   public RollCell(ResourceBundle bundle){
@@ -28,7 +31,7 @@ public class RollCell extends ListCell<Roll> {
     }else{
       try {
         ClassLoader classLoader = getClass().getClassLoader();
-        FXMLLoader fxmlLoader = new FXMLLoader(classLoader.getResource("res/roll.fxml"), bundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(classLoader.getResource(RES_ROLL_FXML), bundle);
         Controller controller = new Controller();
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
@@ -41,11 +44,11 @@ public class RollCell extends ListCell<Roll> {
   }
 
   private static class Controller {
-    private static final String DIE_FACE_FORMAT = "res/face_%d.png";
+    private static final String DIE_FACE_FORMAT = RES_FACE_D_PNG;
     private static Image[] faces;
     static{
       ClassLoader loader = Controller.class.getClassLoader();
-      faces = new Image[6];
+      faces = new Image[NUMBER_FACES];
       for (int i = 0; i < faces.length; i++) {
         faces[i] = new Image(loader.getResourceAsStream(String.format(DIE_FACE_FORMAT, i+1)));
       }

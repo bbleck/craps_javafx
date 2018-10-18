@@ -8,7 +8,10 @@ import java.util.Random;
 public class Game {
 
 
-
+  public static final String DICE_STATE = "%s %s%n";
+  public static final int NUMBER_OF_DICE = 2;
+  public static final int NUMBER_OF_FACES = 6;
+  public static final int CRAPS_NUMBER = 7;
   private State state = State.COME_OUT;
   private int point;
   private Random rng;
@@ -30,12 +33,12 @@ public class Game {
     private final State state;
 
     public Roll(int[] dice, State state) {
-      this.dice = Arrays.copyOf(dice, 2);
+      this.dice = Arrays.copyOf(dice, NUMBER_OF_DICE);
       this.state = state;
     }
 
     public int[] getDice() {
-      return Arrays.copyOf(dice, 2);
+      return Arrays.copyOf(dice, NUMBER_OF_DICE);
     }
 
     public State getState() {
@@ -44,14 +47,14 @@ public class Game {
 
     @Override
     public String toString() {
-      return String.format("%s %s%n", Arrays.toString(dice), state);
+      return String.format(DICE_STATE, Arrays.toString(dice), state);
     }
   }
 
   private State rollDice() {
     int[] dice = {
-        rng.nextInt(6) + 1,
-        rng.nextInt(6) + 1
+        rng.nextInt(NUMBER_OF_FACES) + 1,
+        rng.nextInt(NUMBER_OF_FACES) + 1
     };
     int total = dice[0] + dice[1];
     State state = this.state.roll(total, point);
@@ -120,7 +123,7 @@ public class Game {
       public State roll(int total, int point) {
         if (total == point) {
           return WIN;
-        } else if (total == 7) {
+        } else if (total == CRAPS_NUMBER) {
           return LOSS;
         } else {
           return this;

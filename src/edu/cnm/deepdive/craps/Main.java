@@ -26,12 +26,21 @@ public class Main extends Application {
     launch(args);
   }
 
+  /**
+   * start(Stage stage) is an overridden method that calls setupLoaders() and setupStage(stage, loadLayout())
+   * @param stage
+   * @throws Exception
+   */
   @Override
   public void start(Stage stage) throws Exception {
     setupLoaders();
     setupStage(stage, loadLayout());
   }
 
+  /**
+   * stop() is an overridden method that calls controller.stop()
+   * @throws Exception
+   */
   @Override
   public void stop() throws Exception {
     controller.stop();

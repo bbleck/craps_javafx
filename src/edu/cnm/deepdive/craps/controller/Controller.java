@@ -106,6 +106,9 @@ public class Controller {
     }
   }
 
+  /**
+   * stop() is a method that calls the pause(null) method.
+   */
   public void stop(){
     pause(null);
   }
